@@ -3,9 +3,7 @@
     "name": "BridgeExample",
     "slug": "BridgeExample",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"]
   },
   "name": "BridgeExample"
 }
