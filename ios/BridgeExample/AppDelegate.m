@@ -44,6 +44,17 @@ static void InitializeFlipper(UIApplication *application) {
 
   [super application:application didFinishLaunchingWithOptions:launchOptions];
 
+  // initialize ExampleModule.m and call start function to initialize swift files.
+    /* Example integration init */
+    _exampleModule = [[ExampleModule alloc] init];
+    [_exampleModule start];
+    [_exampleModule increase:0];
+    [_exampleModule decrease:0];
+    [_exampleModule getCounter];
+
+    /* Example integration init */
+
+  
   return YES;
  }
 
