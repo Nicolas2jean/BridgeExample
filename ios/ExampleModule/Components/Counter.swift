@@ -8,20 +8,15 @@
 import Foundation
 
 class Counter: NSObject {
-  
+  @objc public var _customs: CustomsProcess;
   public var _counter: Array<Int> = Array<Int>([0]);
   
   override init() {
-
-  }
-  
-  // sends event to React Native
-  func sendEvent (status: String, data: NSMutableDictionary) {
-    ReactNativeEventEmitter.shared?.emitEvent(withName: "ExampleEvents", body: ["status": status, "data": data])
+    // initialize customs
+    _customs = CustomsProcess(eventName: "ExampleEvents", continueAskCode: NativeCode.SUCCESS_CONTINUE_ASK.rawValue);
   }
   
   @objc func increase(_ indexToIncrease: Int, timeoutCounter: Int) {
-    DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(timeoutCounter)) {
       // create a NSMutableDictionary to store event variables
       let params: NSMutableDictionary = [:]
 
@@ -32,7 +27,7 @@ class Counter: NSObject {
         params["error"] = "index to increase doesn't exist in counter array";
         
         // send error event
-        self.sendEvent(status: "ERROR_INCREASE", data: params)
+        self._customs.processEvent(eventId: NativeCode.ERROR_COUNTER_INCREASE.rawValue, params: params)
         return ;
       }
     
@@ -45,8 +40,7 @@ class Counter: NSObject {
       params["error"] = false;
 
       // send success event
-      self.sendEvent(status: "SUCCESS_INCREASE", data: params)
-    }
+    self._customs.processEvent(eventId: NativeCode.SUCCESS_COUNTER_INCREASE.rawValue, params: params);
   }
   
   @objc func decrease(_ indexToDecrease: Int) {
@@ -60,7 +54,7 @@ class Counter: NSObject {
       params["error"] = "index to decrease doesn't exist in counter array";
       
       // send error event
-      sendEvent(status: "ERROR_DECREASE", data: params)
+      _customs.processEvent(eventId: NativeCode.ERROR_COUNTER_DECREASE.rawValue, params: params)
       return ;
     }
   
@@ -73,7 +67,8 @@ class Counter: NSObject {
     params["error"] = false;
 
     // send success event
-    sendEvent(status: "SUCCESS_DECREASE", data: params)  }
+    _customs.processEvent(eventId: NativeCode.SUCCESS_COUNTER_DECREASE.rawValue, params: params)
+  }
 
   // a simple getter for _counter
   @objc func getCounter() {
@@ -92,6 +87,6 @@ class Counter: NSObject {
     params["counter"] = counterArray;
     
     // send success event
-    sendEvent(status: "SUCCESS_GET_COUNTER", data: params)
+    _customs.processEvent(eventId: NativeCode.SUCCESS_COUNTER_GET_COUNT.rawValue, params: params)
   }
 }

@@ -1,0 +1,17 @@
+import Foundation
+
+enum NativeCode: String {
+  // increase code
+   case SUCCESS_COUNTER_INCREASE = "SUCCESS_COUNTER_INCREASE"
+   case ERROR_COUNTER_INCREASE = "ERROR_COUNTER_INCREASE"
+  
+  // decrease code
+  case SUCCESS_COUNTER_DECREASE = "SUCCESS_COUNTER_DECREASE"
+  case ERROR_COUNTER_DECREASE = "ERROR_COUNTER_DECREASE"
+
+  // getCount code
+  case SUCCESS_COUNTER_GET_COUNT = "SUCCESS_COUNTER_GET_COUNT"
+  
+  // finish talking code
+  case SUCCESS_CONTINUE_ASK = "SUCCESS_CONTINUE_ASK"
+}
