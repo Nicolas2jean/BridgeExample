@@ -18,8 +18,8 @@ Counter* _swiftCounter;
 }
 
 // this exports increase function to React native
-RCT_EXPORT_METHOD(increase:(NSInteger) indexToIncrease) {
-  [_swiftCounter increase:indexToIncrease];
+RCT_EXPORT_METHOD(increase:(NSInteger) indexToIncrease timeout:(NSInteger) timeoutCounter) {
+  [_swiftCounter increase:indexToIncrease timeoutCounter:timeoutCounter];
 }
 
 // this exports decrease function to React native for counter one

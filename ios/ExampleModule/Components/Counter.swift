@@ -20,8 +20,8 @@ class Counter: NSObject {
     ReactNativeEventEmitter.shared?.emitEvent(withName: "ExampleEvents", body: ["status": status, "data": data])
   }
   
-  @objc func increase(_ indexToIncrease: Int) {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+  @objc func increase(_ indexToIncrease: Int, timeoutCounter: Int) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(timeoutCounter)) {
       // create a NSMutableDictionary to store event variables
       let params: NSMutableDictionary = [:]
 

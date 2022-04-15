@@ -21,27 +21,35 @@ type NativeEvent = {
   status: string;
 };
 
+function getRandomInt(max: number) {
+  return Math.floor(Math.random() * max);
+}
+
 export default function App() {
   const nativeEvent = useNativeEventEmitter<NativeEvent>(
     exampleNativeEmitterName,
     exampleNativeEventName
   );
 
+  console.log(
+    "NATIVE EVENT : index_counter_value -> ",
+    nativeEvent?.data.index_counter_value
+  );
   return (
     <View style={styles.container}>
       <Text>{nativeEvent?.data.index_counter_value}</Text>
 
       <TouchableOpacity
         onPress={() => {
-          ExampleModule?.increase?.(0); // +1
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +1
           ExampleModule?.decrease?.(0); // 0
-          ExampleModule?.increase?.(0); // +1
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +1
           ExampleModule?.decrease?.(0); // 0
-          ExampleModule?.increase?.(0); // +1
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +1
           ExampleModule?.decrease?.(0); // 0
-          ExampleModule?.increase?.(0); // +1
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +1
           ExampleModule?.decrease?.(0); // 0
-          ExampleModule?.increase?.(0); // +1
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +1
           ExampleModule?.decrease?.(0); // 0
         }}
       >
@@ -51,16 +59,16 @@ export default function App() {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
-          ExampleModule?.increase?.(0); // +1
-          ExampleModule?.increase?.(0); // +2
-          ExampleModule?.increase?.(0); // +3
-          ExampleModule?.increase?.(0); // +4
-          ExampleModule?.increase?.(0); // +5
-          ExampleModule?.increase?.(0); // +6
-          ExampleModule?.increase?.(0); // +7
-          ExampleModule?.increase?.(0); // +8
-          ExampleModule?.increase?.(0); // +9
-          ExampleModule?.increase?.(0); // +10
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +1
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +2
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +3
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +4
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +5
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +6
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +7
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +8
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +9
+          ExampleModule?.increase?.(0, getRandomInt(3)); // +10
         }}
       >
         <Text style={styles.textStyle}>
@@ -85,7 +93,9 @@ export default function App() {
           DECREASE x 10 (should be equal to n-10)
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => ExampleModule?.increase?.(0)}>
+      <TouchableOpacity
+        onPress={() => ExampleModule?.increase?.(0, getRandomInt(3))}
+      >
         <Text>INCREASE</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => ExampleModule?.decrease?.(0)}>
