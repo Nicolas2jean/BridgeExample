@@ -5,6 +5,9 @@
 
 @implementation ExampleModule
 
+// this exports Module to React native
+RCT_EXPORT_MODULE(ExampleModule);
+
 // name of the swift Class
 Counter* _swiftCounter;
 
@@ -14,18 +17,19 @@ Counter* _swiftCounter;
   return true;
 }
 
-// Objective C function wrapping swift methods from initialized swift class
-
-- (void) increase:(NSInteger) indexToIncrease {
-  NSLog(@"counter in increase method : %@", [_swiftCounter increase:indexToIncrease]);
+// this exports increase function to React native
+RCT_EXPORT_METHOD(increase:(NSInteger) indexToIncrease) {
+  [_swiftCounter increase:indexToIncrease];
 }
 
-- (void) decrease:(NSInteger) indexToIncrease {
-  NSLog(@"counter in decrease method : %@", [_swiftCounter decrease:indexToIncrease]);
+// this exports decrease function to React native for counter one
+RCT_EXPORT_METHOD(decrease:(NSInteger) indexToIncrease) {
+  [_swiftCounter decrease:indexToIncrease];
 }
 
-- (void) getCounter {
-  NSLog(@"counter in getCounter method : %@", [_swiftCounter getCounter]);
+// this exports getCounter function to React native for counter one
+RCT_EXPORT_METHOD(getCounter) {
+  [_swiftCounter getCounter];
 }
 
 

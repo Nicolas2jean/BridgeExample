@@ -1,10 +1,8 @@
 #import <Foundation/Foundation.h>
+#import "React/RCTBridgeModule.h"
 
-@interface ExampleModule : NSObject
+@interface ExampleModule : NSObject<RCTBridgeModule>
 
 - (BOOL) start;
-- (void) increase:(NSInteger) indexToIncrease;
-- (void) decrease:(NSInteger) indexToIncrease;
-- (void) getCounter;
 
 @end

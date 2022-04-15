@@ -48,9 +48,6 @@ static void InitializeFlipper(UIApplication *application) {
     /* Example integration init */
     _exampleModule = [[ExampleModule alloc] init];
     [_exampleModule start];
-    [_exampleModule increase:0];
-    [_exampleModule decrease:0];
-    [_exampleModule getCounter];
 
     /* Example integration init */
 
