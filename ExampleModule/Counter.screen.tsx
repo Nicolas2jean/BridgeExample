@@ -13,6 +13,7 @@ function getRandomInt(max: number) {
 
 const CounterScreen: React.FC<CounterScreenProps> = (props) => {
   const counter_data = useObservable(props.bridge.getObservable("counter"));
+  console.log("UPDATE !", counter_data?.index_counter_value);
   return (
     <View style={styles.container}>
       <Text>{counter_data?.index_counter_value}</Text>

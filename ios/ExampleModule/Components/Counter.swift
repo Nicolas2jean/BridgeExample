@@ -17,6 +17,7 @@ class Counter: NSObject {
   }
   
   @objc func increase(_ indexToIncrease: Int, timeoutCounter: Int) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(timeoutCounter)) {
       // create a NSMutableDictionary to store event variables
       let params: NSMutableDictionary = [:]
 
@@ -41,6 +42,7 @@ class Counter: NSObject {
 
       // send success event
     self._customs.processEvent(eventId: NativeCode.SUCCESS_COUNTER_INCREASE.rawValue, params: params);
+    };
   }
   
   @objc func decrease(_ indexToDecrease: Int) {

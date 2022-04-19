@@ -26,6 +26,8 @@ class CustomsProcess: NSObject {
     let data: NSMutableDictionary = [:]
     data["code"] = eventId;
     data["data"] = params;
+    print(data);
+    print(eventId);
     storeEvent(params: data);
   }
 

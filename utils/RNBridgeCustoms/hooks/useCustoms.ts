@@ -100,16 +100,16 @@ const useCustoms = <
           return;
         }
 
-        console.log("here");
-        console.log(nativeEvent.code);
-        console.log(communicationMap[lastAskedCode]);
-        console.log(lastAskedCode);
-
         const awaitingNativeCodes = communicationMap[lastAskedCode];
         // [true] => response is linked to what js asked
         // [false] => it is a native callback user didn't ask for it
         if (awaitingNativeCodes.includes(nativeEvent.code)) {
           // remove first element of the list
+          console.log("here");
+          console.log(nativeEvent.code);
+          console.log(communicationMap[lastAskedCode]);
+          console.log(lastAskedCode);
+
           mainThreadQueue.shift();
           setMainThreadQueue(mainThreadQueue);
         }
