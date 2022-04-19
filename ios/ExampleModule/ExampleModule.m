@@ -32,5 +32,9 @@ RCT_EXPORT_METHOD(getCounter) {
   [_swiftCounter getCounter];
 }
 
+// this exports checkQueueWithLastActionAsked function to React native
+RCT_EXPORT_METHOD(checkCallbackQueue:(NSString *) code) {
+  [_swiftCounter._customs checkQueueWithLastActionAsked:code];
+}
 
 @end
